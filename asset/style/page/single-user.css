@@ -1,0 +1,136 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0px;
+}
+.is-hireable {
+  margin: 0px 5px;
+}
+.user-info .user-status {
+  display: flex;
+  gap: 30px;
+  font-size: 1.1rem;
+  margin: 5px 0px;
+}
+.user-info .user-status a {
+  text-decoration: none;
+  transition: 0.3s;
+  background-color: var(--light-color);
+  color: black;
+}
+.user-info .user-status a:hover {
+  opacity: 0.6;
+}
+.user-info .user-profile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  gap: 100px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.user-profile figure {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.user-profile figure img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.user-profile figure .user-name-adress {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+.user-profile .about-user {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.user-bio {
+  font-weight: bold;
+}
+.user-profile .about-user a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  text-align: center;
+  transition: 0.3s;
+}
+.user-profile .about-user a:hover {
+  opacity: 0.8;
+}
+.user-info .user-activities {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+.user-info .user-activities span {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--light-color);
+  border-radius: 5px;
+}
+
+.user-activities span:nth-child(1) {
+  background-color: var(--primary-color);
+}
+.user-activities span:nth-child(2) {
+  color: var(--dark-color);
+}
+.user-activities span:nth-child(3) {
+  background-color: green;
+}
+.user-activities span:nth-child(4) {
+  background-color: var(--dark-color);
+}
+
+.user-info .user-repositories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.user-repositories .repository {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.user-repositories .repository a {
+  text-decoration: none;
+  transition: 0.3s;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.user-repositories .repository a:hover {
+  opacity: 0.7;
+}
+
+/* icons */
+.check {
+  color: green;
+}
+.close {
+  color: red;
+}
+@media (max-width: 768px) {
+  .user-info .user-profile {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .user-info .user-activities {
+    flex-wrap: wrap;
+  }
+}
+/* @media (max-width: 425px) {
+} */

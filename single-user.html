@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>single user</title>
+    <link rel="stylesheet" href="./asset/style/global.css" />
+    <link rel="stylesheet" href="./asset/style/reset.css" />
+    <link rel="stylesheet" href="./asset/style/page/single-user.css" />
+    <script
+      src="https://kit.fontawesome.com/1a03df0e89.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Header Of Site -->
+    <header class="header">
+      <nav>
+        <ul>
+          <li><a href="index.html">Github</a></li>
+          <li><a href="#">Time</a></li>
+          <li><a href="#">Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Container For Site -->
+    <div class="container">
+      <div class="user-info">
+        <!-- User Status -->
+        <div class="user-status">
+          <a href="index.html">Back To Search</a>
+          <span class="hireable">
+            hireable :
+            <span class="is-hireable">
+              <i class="fa-solid fa-close close"></i>
+            </span>
+          </span>
+        </div>
+        <!-- User Profile -->
+        <section class="user-profile">
+          <figure>
+            <img src="" alt="" class="user-image" />
+            <div class="user-name-adress">
+              <span class="user-name"></span>
+              <span class="user-adress"></span>
+            </div>
+          </figure>
+          <!-- More Info For User -->
+          <div class="about-user"></div>
+        </section>
+        <!-- Activities Of User -->
+        <div class="user-activities"></div>
+        <div class="user-repositories"></div>
+      </div>
+    </div>
+    <script>
+      // Select Dom Element
+      const isHireable = document.querySelector(".is-hireable");
+      const userProfile = document.querySelector(".user-image");
+      const userSelfName = document.querySelector(".user-name");
+      const userAdress = document.querySelector(".user-adress");
+      const aboutUser = document.querySelector(".about-user");
+      const activitiesUser = document.querySelector(".user-activities");
+      const repositoryElements = document.querySelector(".user-repositories");
+      const locationHref = window.location.href;
+      const userName = locationHref.split("?")?.at(1).split("=")?.at(1);
+      const baseUrl = "https://api.github.com/users/";
+      //   Set Loader For Part Of Site
+      aboutUser.innerHTML = `<div class="loader"></div>`;
+      activitiesUser.innerHTML = `<div class="loader"></div>`;
+      //   Get User
+      const getUser = async (userName) => {
+        try {
+          const response = await fetch(`${baseUrl}${userName}`);
+          const user = await response.json();
+          return user;
+        } catch (error) {
+          return error;
+        }
+      };
+      //  Show User
+      const showUser = async (userName) => {
+        const user = await getUser(userName);
+        aboutUser.innerHTML = "";
+        activitiesUser.innerHTML = "";
+        if (user.hireable) {
+          isHireable.innerHTML = `<i class="fa-solid fa-check check"></i>`;
+        }
+        // Set Profile User
+        userProfile.src = user.avatar_url;
+        userSelfName.innerText = user.name;
+        userAdress.innerText = user.location;
+        // Set More Info
+        if (user.bio) {
+          aboutUser.innerHTML += `<span class="user-bio">bio :</span> ${user.bio}`;
+        }
+        if (user.login) {
+          aboutUser.innerHTML += `<a href="https://github.com/${user.login}" class="user-github">Visit Github Page</a>`;
+          aboutUser.innerHTML += `<span>login : ${user.login}</span>`;
+        }
+        if (user.company) {
+          aboutUser.innerHTML += `<span>company : ${user.company}</span>`;
+        }
+        if (user.blog) {
+          aboutUser.innerHTML += `<span>Website : ${user.blog}</span>`;
+        }
+        // Set Activities User
+        activitiesUser.innerHTML += `
+            <span>Followers : ${user.followers}</span>
+            <span>Following : ${user.following}</span>
+            <span>Public Repos : ${user.public_repos}</span>
+            <span>Public Gists : ${user.public_gists}</span> 
+        `;
+      };
+      // Get Repsitory
+      const getRepositories = async (userName) => {
+        const response = await fetch(
+          `${baseUrl}${userName}/repos?per_page=5&sort=created:asc`
+        );
+        const repositoriese = await response.json();
+        return repositoriese;
+      };
+      const showRepositories = async () => {
+        const repositoriese = await getRepositories(userName);
+        const user = await getUser(userName);
+        const userLogin = user.login;
+        repositoriese.forEach((repo) => {
+          repositoryElements.innerHTML += `
+                <div class="repository"><a href="https://github.com/${userLogin}/${repo.name}">${repo.name}</a></div>
+            `;
+        });
+      };
+      showUser(userName);
+      showRepositories();
+    </script>
+  </body>
+</html>

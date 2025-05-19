@@ -1,0 +1,109 @@
+/* Some Style For Form Control */
+.form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 50px 0px;
+}
+.form-control form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.form-control form input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: var(--fsz);
+}
+/* Button's Form */
+.form-control form .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-control form .actions .submit-btn,
+.form-control form .actions .clear-btn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: var(--fsz);
+}
+.form-control form .actions .submit-btn {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+.form-control form .actions .clear-btn {
+  display: none;
+  color: black;
+}
+.form-control form .actions .clear-btn:hover {
+  color: red;
+}
+.form-control form .actions .submit-btn:hover {
+  opacity: 0.8;
+}
+/* Users's Style */
+.form-control #users {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.form-control #users li {
+  background-color: gray;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border: 1px dotted black;
+  border-radius: 5px;
+  padding: 20px 0px;
+}
+.form-control #users li img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.form-control #users li a {
+  text-decoration: none;
+  color: var(--light-color);
+  background-color: var(--dark-color);
+  padding: 10px;
+  transition: 0.3s;
+}
+.form-control #users li a:hover {
+  color: black;
+  opacity: 0.8;
+}
+/* Error Class */
+.error {
+  padding: 10px;
+  background-color: gray;
+  border: 1px solid black;
+}
+
+
+
+/* A Litle Responsive */
+@media (max-width: 768px) {
+  .form-control #users {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .form-control #users li {
+    padding: 10px 0px;
+  }
+}
+@media (max-width: 425px) {
+  .form-control #users {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .form-control #users li {
+    padding: 5px 0px;
+  }
+}
