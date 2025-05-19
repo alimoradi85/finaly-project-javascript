@@ -122,6 +122,8 @@
 .close {
   color: red;
 }
+
+
 @media (max-width: 768px) {
   .user-info .user-profile {
     flex-direction: column;
