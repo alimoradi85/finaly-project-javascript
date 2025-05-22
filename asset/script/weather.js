@@ -42,7 +42,7 @@ const showWeather = async () => {
       humidityDisplay.innerText = `Humidity: ${data.main.humidity}%`;
       descriptionDisplay.innerText = `${data.weather[0].description}`;
     } catch (error) {
-      weatherStatus.innerHTML = `Error fetching weather data :), ${error}`;
+      weatherStatus.innerHTML = `Error fetching weather data :), ${error} Please try again`;
     }
   } else {
     alert("Please enter a city name");
