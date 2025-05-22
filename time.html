@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Analog Clock</title>
     <link rel="stylesheet" href="./asset/style/reset.css" />
+    <link rel="stylesheet" href="./asset/style/global.css" />
     <link rel="stylesheet" href="./asset/style/page/time.css" />
   </head>
   <body>
-    <div class="clock">
+    <header class="header">
+      <nav>
+        <ul>
+          <li><a href="index.html">Github</a></li>
+          <li><a href="time.html">Time</a></li>
+          <li><a href="weather.html">Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="app-clock">
+          <div class="clock">
       <div class="hand hour" id="hour"></div>
       <div class="hand minute" id="minute"></div>
       <div class="hand second" id="second"></div>
@@ -19,6 +30,7 @@
       <span class="digital-minute"></span>
       <span class="digital-second"></span>
       <span class="ante-post"></span>
+    </div>
     </div>
 
     <script src="./asset/script/time.js"></script>

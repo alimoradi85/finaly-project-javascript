@@ -1,12 +1,14 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
   height: 100vh;
   background-color: #c5b2b2;
-  margin: 0;
+}
+.app-clock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 50px 0px;
 }
 .clock {
   position: relative;
