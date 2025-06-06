@@ -7,6 +7,7 @@ const temperatureDisplay = document.querySelector(".temperature");
 const humidityDisplay = document.querySelector(".humidity");
 const descriptionDisplay = document.querySelector(".description");
 const weatherStatus = document.querySelector(".weather-status");
+const loaderElemet = document.querySelector(".loader");
 // Base URL and API key for OpenWeatherMap
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 const keyApi = "066d5e431bfd98a9b2613b25912370c3";
@@ -31,6 +32,7 @@ const showWeather = async () => {
   if (cityName) {
     cityNameInput.value = "";
     try {
+      loaderElemet.style.display = "block";
       const data = await getWeather(cityName);
       const codeCountry = data.sys.country;
       const countryName = await getCounteis(codeCountry);
@@ -41,7 +43,9 @@ const showWeather = async () => {
       )}°C`;
       humidityDisplay.innerText = `Humidity: ${data.main.humidity}%`;
       descriptionDisplay.innerText = `${data.weather[0].description}`;
+      loaderElemet.style.display = "none";
     } catch (error) {
+      loaderElemet.style.display = "none";
       weatherStatus.innerHTML = `Error fetching weather data :), ${error} Please try again`;
     }
   } else {

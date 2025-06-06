@@ -50,6 +50,7 @@ const showUsers = async (e) => {
     body.innerHTML = usersInfo;
   }
 };
+
 //  If The User Refresh The Page
 // Lcal Storage Set To Empty
 fromUsers.addEventListener("submit", showUsers);
@@ -64,6 +65,7 @@ clearBtn.addEventListener("click", () => {
   clearBtn.style.display = `none`;
   localStorage.setItem("query", "");
 });
+
 // Show Users From Local Storage
 //   This Function Show Users From Local Storage
 const showUsersFromLocal = async () => {
@@ -103,15 +105,3 @@ const error = () => {
     div.remove();
   }, 3000);
 };
-
-// window.addEventListener("load", function () {
-//   const navEntires = Performance.getEntriesByType("navigation");
-//   if (navEntires[0].type === "reload") {
-//     console.log("safhe load shod");
-//   }
-// });
-// const entires = Performance.navigation;
-// console.log(entires);
-// if (entires.length > 1 && entires[0].type === "reload") {
-//   console.log("safhe refresh shod");
-// }
