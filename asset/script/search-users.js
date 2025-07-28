@@ -1,5 +1,4 @@
 //  Imports
-import baseUrl from "./base-url.js";
 import { getUsers } from "./get-api.js";
 // Select Dom Element
 const listUsers = document.getElementById("users");
@@ -47,13 +46,18 @@ const showUsers = async (e) => {
     fromUsers.user.value = "";
   } else {
     // Set Error
+
     body.innerHTML = usersInfo;
   }
+  if (usersInfo.items.length === 0) {
+    errorNoUser(query);
+    clearBtn.style.display = `none`;
+  }
 };
+fromUsers.addEventListener("submit", showUsers);
 
 //  If The User Refresh The Page
 // Lcal Storage Set To Empty
-fromUsers.addEventListener("submit", showUsers);
 if (performance.navigation && performance.navigation.type === 1) {
   localStorage.setItem("query", "");
 }
@@ -104,4 +108,14 @@ const error = () => {
     clicked = false;
     div.remove();
   }, 3000);
+};
+
+const errorNoUser = (name) => {
+  const div = document.createElement("div");
+  div.classList.add("error");
+  div.innerText = `!! (${name}) is not found (please enter a right name :)  )`;
+  fromUsers.after(div);
+  setTimeout(() => {
+    div.remove();
+  }, 5000);
 };

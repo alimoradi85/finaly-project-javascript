@@ -6,18 +6,20 @@ export const getUsers = async (query) => {
   try {
     const res = await fetch(`${baseUrl}?q=${query}`);
     const users = await res.json();
+
     return users;
   } catch (error) {
     const er = `
       <div class="modal-error">
         <div class="in-modal-error">
-          !! There is a problem with the server, please try again later
+          !! There is a problem with the server, please try again later :)
         </div>
       </div>
       `;
-      return er;
-    }
+    return er;
+  }
 };
+
 // Get Single User
 export const getUser = async (userName) => {
   try {
@@ -34,6 +36,7 @@ export const getUser = async (userName) => {
         </div>
       </div>
       `;
+    return er;
   }
 };
 // Get Repsitories
@@ -49,4 +52,3 @@ export const getRepositories = async (userName) => {
     return error;
   }
 };
-
